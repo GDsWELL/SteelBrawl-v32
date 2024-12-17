@@ -31,6 +31,7 @@
      dotnet run Program.cs
      
   # 7. Ну тут вроде всё должно запуститься и работать
+  WellWellWell
   
 
    
