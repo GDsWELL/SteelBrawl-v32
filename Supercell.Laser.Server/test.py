@@ -2,7 +2,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-API_TOKEN = '6981617580:AAFY7GXnVYrwaNxdWMAB1yK0JLB7i34dUhQ' # Замените на свой токен бота
+API_TOKEN = 'tokentoken' # Замените на свой токен бота
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
