@@ -85,7 +85,7 @@ def clear_battle_logs():
     except Exception as e:
         return False
 
-bot = Bot(token='6981617580:AAFY7GXnVYrwaNxdWMAB1yK0JLB7i34dUhQ')
+bot = Bot(token='tokentut')
 dp = Dispatcher(bot)
 
 async def send_stats_message(chat_id, message_id):
