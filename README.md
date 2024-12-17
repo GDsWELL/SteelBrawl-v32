@@ -18,13 +18,12 @@
   # 3. Импортируйте файл `database.sql` из репозитрия в вашу базу
      
   # 4. Откройте папку Supercell.Laser.Server:
-     `cd Supercell.Laser.Server`
+     cd Supercell.Laser.Server
   
   # 5. Запустите файл Program.cs:
-     `dotnet run Program.cs`
+     dotnet run Program.cs
      
   # 6. Ну тут вроде всё должно запуститься и работать
-     Приятной игры
 
    
 
