@@ -24,13 +24,14 @@
   # 4. Подключите базу-данных к серверу
   Укажите данные своей базы-данных по пути `Supercell.Laser.Server/config.json` в файле `config.json`
      
-  # 4. Откройте папку Supercell.Laser.Server:
+  # 5. Откройте папку Supercell.Laser.Server:
      cd Supercell.Laser.Server
   
-  # 5. Запустите файл Program.cs:
+  # 6. Запустите файл Program.cs:
      dotnet run Program.cs
      
-  # 6. Ну тут вроде всё должно запуститься и работать
+  # 7. Ну тут вроде всё должно запуститься и работать
+  
 
    
 
