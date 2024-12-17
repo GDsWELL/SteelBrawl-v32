@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pXFbm+j9rY8=",
+  "success": true,
+  "projectFilePath": "/root/steelbrawl/V29/V29/Supercell.Laser.Logic/Supercell.Laser.Logic.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
