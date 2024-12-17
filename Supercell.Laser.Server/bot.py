@@ -9,23 +9,23 @@ from aiogram.dispatcher.filters import Command
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 import logging
 
-# Логирование
+# Г‹Г®ГЈГЁГ°Г®ГўГ Г­ГЁГҐ
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN = '8069062516:AAH7E3M-3-W5UrPNnKAkKfDLdoGQ23saEag'
-USER_ID = '6744773692'
+API_TOKEN = 'С‚РѕРєРµРЅ Р±РѕС‚Р°'
+USER_ID = 'С‚СѓС‚ РёРґ СЋР·РµСЂР° С‚Рі'
 FILE_PATH = 'bin/Debug/net6.0/battles.txt'
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
-dp.middleware.setup(LoggingMiddleware())  # Логирование ошибок и запросов
+dp.middleware.setup(LoggingMiddleware())  # Г‹Г®ГЈГЁГ°Г®ГўГ Г­ГЁГҐ Г®ГёГЁГЎГ®ГЄ ГЁ Г§Г ГЇГ°Г®Г±Г®Гў
 
-last_line_number = 0  # Номер последней обработанной строки
+last_line_number = 0  
 
 async def check_battles():
     global last_line_number
     if not os.path.isfile(FILE_PATH):
-        logging.warning(f"Файл {FILE_PATH} не найден.")
+        logging.warning(f"Г”Г Г©Г« {FILE_PATH} Г­ГҐ Г­Г Г©Г¤ГҐГ­.")
         return
 
     with open(FILE_PATH, 'r', encoding='utf-8') as file:
@@ -42,43 +42,43 @@ async def check_battles():
                             rank_str = line.split('Battle Rank: ')[-1].split(' ')[0]
                             rank = int(rank_str)
                             if rank < 2 and battle_time < 30:
-                                message = f"Есть подозрение на читы! {line.strip()}"
+                                message = f"Г…Г±ГІГј ГЇГ®Г¤Г®Г§Г°ГҐГ­ГЁГҐ Г­Г  Г·ГЁГІГ»! {line.strip()}"
                                 await bot.send_message(chat_id=USER_ID, text=message)
                         elif "gamemode: BattleRoyaleTeam" in line:
                             rank_str = line.split('Battle Rank: ')[-1].split(' ')[0]
                             rank = int(rank_str)
                             if rank < 2 and battle_time < 30:
-                                message = f"Есть подозрение на читы! {line.strip()}"
+                                message = f"Г…Г±ГІГј ГЇГ®Г¤Г®Г§Г°ГҐГ­ГЁГҐ Г­Г  Г·ГЁГІГ»! {line.strip()}"
                                 await bot.send_message(chat_id=USER_ID, text=message)
                         else:
                             if battle_time < 25:
-                                message = f"Есть подозрение на читы! {line.strip()}"
+                                message = f"Г…Г±ГІГј ГЇГ®Г¤Г®Г§Г°ГҐГ­ГЁГҐ Г­Г  Г·ГЁГІГ»! {line.strip()}"
                                 await bot.send_message(chat_id=USER_ID, text=message)
                     except ValueError:
-                        logging.error("Ошибка обработки строки", exc_info=True)
+                        logging.error("ГЋГёГЁГЎГЄГ  Г®ГЎГ°Г ГЎГ®ГІГЄГЁ Г±ГІГ°Г®ГЄГЁ", exc_info=True)
                         pass
         last_line_number = len(lines)
 
 async def periodic_check():
     while True:
         await check_battles()
-        await asyncio.sleep(20)  # Проверка каждые 20 секунд
+        await asyncio.sleep(20)  # ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ Г¦Г¤Г»ГҐ 20 Г±ГҐГЄГіГ­Г¤
 
-# Обработчик команды /start
+# ГЋГЎГ°Г ГЎГ®ГІГ·ГЁГЄ ГЄГ®Г¬Г Г­Г¤Г» /start
 @dp.message_handler(Command('start'))
 async def start_handler(message: types.Message):
-    await message.reply("Привет! Я отслеживаю подозрительные логи. Начинаю работу...")
-    logging.info("Бот начал отслеживать логи.")
+    await message.reply("ГЏГ°ГЁГўГҐГІ! Гџ Г®ГІГ±Г«ГҐГ¦ГЁГўГ Гѕ ГЇГ®Г¤Г®Г§Г°ГЁГІГҐГ«ГјГ­Г»ГҐ Г«Г®ГЈГЁ. ГЌГ Г·ГЁГ­Г Гѕ Г°Г ГЎГ®ГІГі...")
+    logging.info("ГЃГ®ГІ Г­Г Г·Г Г« Г®ГІГ±Г«ГҐГ¦ГЁГўГ ГІГј Г«Г®ГЈГЁ.")
 
-# Запуск периодической проверки в фоне
+# Г‡Г ГЇГіГ±ГЄ ГЇГҐГ°ГЁГ®Г¤ГЁГ·ГҐГ±ГЄГ®Г© ГЇГ°Г®ГўГҐГ°ГЄГЁ Гў ГґГ®Г­ГҐ
 async def on_startup(_):
-    logging.info("Бот запущен и готов к работе!")
+    logging.info("ГЃГ®ГІ Г§Г ГЇГіГ№ГҐГ­ ГЁ ГЈГ®ГІГ®Гў ГЄ Г°Г ГЎГ®ГІГҐ!")
     asyncio.create_task(periodic_check())
 
-# Основной запуск бота
+# ГЋГ±Г­Г®ГўГ­Г®Г© Г§Г ГЇГіГ±ГЄ ГЎГ®ГІГ 
 if __name__ == '__main__':
     try:
-        logging.info("Запуск бота...")
+        logging.info("Г‡Г ГЇГіГ±ГЄ ГЎГ®ГІГ ...")
         executor.start_polling(dp, on_startup=on_startup)
     except Exception as e:
-        logging.error(f"Ошибка при запуске бота: {e}")
+        logging.error(f"ГЋГёГЁГЎГЄГ  ГЇГ°ГЁ Г§Г ГЇГіГ±ГЄГҐ ГЎГ®ГІГ : {e}")
